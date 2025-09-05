@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>F1 Grand Prix History Quiz</title>
+  <link rel="stylesheet" href="TDS_project.css" />
+</head>
+<body>
+  <!-- Login Page -->
+  <div class="container" id="login-container">
+    <h2>Welcome to the F1 History Quiz 🏎️</h2>
+    <p>Enter your name to begin:</p>
+    <input type="text" id="player-name" placeholder="Your name..." />
+    <button class="btn" onclick="startGame()">Start Quiz</button>
+  </div>
+
+  <!-- Quiz Page -->
+  <div class="container" id="quiz-container" style="display: none;">
+    <h2 id="welcome"></h2>
+    <h3 id="progress">Question 1 of 24</h3>
+    <h2 id="question">Loading...</h2>
+    <div id="answer-buttons"></div>
+    <button id="next-btn" class="btn">Next</button>
+
+    <!-- Trophy container (hidden until the end) -->
+    <div id="trophy-container" class="trophy-row" style="display:none;"></div>
+  </div>
+
+  <!-- Barrels for Confetti -->
+  <div class="barrel left" id="barrel-left"></div>
+  <div class="barrel right" id="barrel-right"></div>
+
+  <script src="TDS_project.js"></script>
+</body>
+</html>
