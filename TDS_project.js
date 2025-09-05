@@ -1,213 +1,467 @@
-body {
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  color: #fff;
-  overflow: hidden;
-}
-
-.container {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  max-width: 550px;
-  width: 100%;
-  text-align: center;
-  animation: fadeIn 0.7s ease;
-  position: relative;
-
-}
-
-h2 {
-  margin-bottom: 20px;
-  font-size: 1.6rem;
-}
-
-h3#progress {
-  margin-bottom: 15px;
-  font-size: 1rem;
-  font-weight: 400;
-  color: #ffeb3b;
-}
-
-input {
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  width: 80%;
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
-
-.btn {
-  display: inline-block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: #fff;
-  color: #333;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  transform: scale(1.05);
-  background: #ffeb3b;
-}
-
-.correct {
-  background: #4CAF50 !important;
-  color: #fff;
-  animation: correctAnim 0.6s ease, glow 1s ease infinite alternate;
-}
-
-.wrong {
-  background: #f44336 !important;
-  color: #fff;
-  animation: wrongAnim 0.6s ease;
-}
-
-#next-btn {
-  margin-top: 15px;
-  background: #2196F3;
-  color: white;
-  display: none;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes correctAnim {
-  0% { transform: scale(1); }
-  30% { transform: scale(1.2) rotate(5deg); }
-  60% { transform: scale(0.9) rotate(-5deg); }
-  100% { transform: scale(1); }
-}
-
-@keyframes glow {
-  from { box-shadow: 0 0 10px #4CAF50; }
-  to { box-shadow: 0 0 20px #4CAF50; }
-}
-
-@keyframes wrongAnim {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-10px); }
-  40% { transform: translateX(10px); }
-  60% { transform: translateX(-10px); }
-  80% { transform: translateX(10px); }
-}
-
-/* Confetti */
-.confetti {
-  position: absolute;
-  bottom: 80px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  opacity: 0.9;
-  animation: shootUp 2.5s ease-out forwards;
-  z-index: 2000;
-}
-
-@keyframes shootUp {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
+const questions = [
+  // 1. Bahrain
+  {
+    question: "Who won the inaugural Bahrain Grand Prix in 2004?",
+    answers: [
+      { text: "Michael Schumacher", correct: true },
+      { text: "Fernando Alonso", correct: false },
+      { text: "Kimi Räikkönen", correct: false },
+      { text: "Rubens Barrichello", correct: false }
+    ]
+  },
+  // 2. Saudi Arabia
+  {
+    question: "Who won the first Saudi Arabian Grand Prix in 2021?",
+    answers: [
+      { text: "Lewis Hamilton", correct: true },
+      { text: "Max Verstappen", correct: false },
+      { text: "Valtteri Bottas", correct: false },
+      { text: "Sergio Pérez", correct: false }
+    ]
+  },
+  // 3. Australia
+  {
+    question: "Which city replaced Adelaide as the Australian GP host in 1996?",
+    answers: [
+      { text: "Melbourne", correct: true },
+      { text: "Sydney", correct: false },
+      { text: "Perth", correct: false },
+      { text: "Brisbane", correct: false }
+    ]
+  },
+  // 4. Japan
+  {
+    question: "At which circuit is the Japanese Grand Prix traditionally held?",
+    answers: [
+      { text: "Suzuka Circuit", correct: true },
+      { text: "Fuji Speedway", correct: false },
+      { text: "Okayama", correct: false },
+      { text: "Motegi", correct: false }
+    ]
+  },
+  // 5. China
+  {
+    question: "Who won the first Chinese Grand Prix in 2004?",
+    answers: [
+      { text: "Rubens Barrichello", correct: true },
+      { text: "Michael Schumacher", correct: false },
+      { text: "Fernando Alonso", correct: false },
+      { text: "Kimi Räikkönen", correct: false }
+    ]
+  },
+  // 6. Miami
+  {
+    question: "In which year was the first Miami Grand Prix held?",
+    answers: [
+      { text: "2022", correct: true },
+      { text: "2021", correct: false },
+      { text: "2023", correct: false },
+      { text: "2020", correct: false }
+    ]
+  },
+  // 7. Emilia Romagna (Imola)
+  {
+    question: "What is the official name of the Imola circuit hosting the Emilia Romagna GP?",
+    answers: [
+      { text: "Autodromo Enzo e Dino Ferrari", correct: true },
+      { text: "Autodromo Nazionale Monza", correct: false },
+      { text: "Mugello Circuit", correct: false },
+      { text: "Vallelunga Circuit", correct: false }
+    ]
+  },
+  // 8. Monaco
+  {
+    question: "Who holds the record for the most Monaco Grand Prix wins?",
+    answers: [
+      { text: "Ayrton Senna", correct: true },
+      { text: "Michael Schumacher", correct: false },
+      { text: "Graham Hill", correct: false },
+      { text: "Alain Prost", correct: false }
+    ]
+  },
+  // 9. Canada
+  {
+    question: "Who was the first Canadian driver to win the Canadian Grand Prix?",
+    answers: [
+      { text: "Gilles Villeneuve", correct: true },
+      { text: "Jacques Villeneuve", correct: false },
+      { text: "Lance Stroll", correct: false },
+      { text: "George Eaton", correct: false }
+    ]
+  },
+  // 10. Spain
+  {
+    question: "Which Spanish driver won his home race at the 2006 Spanish Grand Prix?",
+    answers: [
+      { text: "Fernando Alonso", correct: true },
+      { text: "Carlos Sainz", correct: false },
+      { text: "Pedro de la Rosa", correct: false },
+      { text: "Marc Gené", correct: false }
+    ]
+  },
+  // 11. Austria
+  {
+    question: "Which circuit is home to the Austrian Grand Prix?",
+    answers: [
+      { text: "Red Bull Ring", correct: true },
+      { text: "A1 Ring", correct: false },
+      { text: "Zeltweg Airfield", correct: false },
+      { text: "Salzburg Ring", correct: false }
+    ]
+  },
+  // 12. Great Britain
+  {
+    question: "Who holds the record for most British Grand Prix wins at Silverstone?",
+    answers: [
+      { text: "Lewis Hamilton", correct: true },
+      { text: "Jim Clark", correct: false },
+      { text: "Nigel Mansell", correct: false },
+      { text: "Alain Prost", correct: false }
+    ]
+  },
+  // 13. Hungary
+  {
+    question: "The Hungaroring, home of the Hungarian GP, is located near which city?",
+    answers: [
+      { text: "Budapest", correct: true },
+      { text: "Debrecen", correct: false },
+      { text: "Szeged", correct: false },
+      { text: "Miskolc", correct: false }
+    ]
+  },
+  // 14. Belgium
+  {
+    question: "Which circuit hosts the Belgian Grand Prix?",
+    answers: [
+      { text: "Spa-Francorchamps", correct: true },
+      { text: "Zolder", correct: false },
+      { text: "Nivelles", correct: false },
+      { text: "Mettet", correct: false }
+    ]
+  },
+  // 15. Netherlands
+  {
+    question: "Who is the most successful driver at the Dutch Grand Prix?",
+    answers: [
+      { text: "Jim Clark", correct: true },
+      { text: "Max Verstappen", correct: false },
+      { text: "Niki Lauda", correct: false },
+      { text: "Jackie Stewart", correct: false }
+    ]
+  },
+  // 16. Italy (Monza)
+  {
+    question: "Which circuit has hosted the most Formula 1 World Championship races?",
+    answers: [
+      { text: "Monza", correct: true },
+      { text: "Silverstone", correct: false },
+      { text: "Spa-Francorchamps", correct: false },
+      { text: "Monaco", correct: false }
+    ]
+  },
+  // 17. Azerbaijan (Baku)
+  {
+    question: "Who won the first F1 race held in Baku in 2016 (then titled the European GP)?",
+    answers: [
+      { text: "Nico Rosberg", correct: true },
+      { text: "Lewis Hamilton", correct: false },
+      { text: "Sebastian Vettel", correct: false },
+      { text: "Daniel Ricciardo", correct: false }
+    ]
+  },
+  // 18. Singapore
+  {
+    question: "Who ended Red Bull’s 2023 winning streak by winning the Singapore GP?",
+    answers: [
+      { text: "Carlos Sainz", correct: true },
+      { text: "Charles Leclerc", correct: false },
+      { text: "Lewis Hamilton", correct: false },
+      { text: "Lando Norris", correct: false }
+    ]
+  },
+  // 19. United States (Austin)
+  {
+    question: "Which city has hosted the United States GP since 2012?",
+    answers: [
+      { text: "Austin", correct: true },
+      { text: "Indianapolis", correct: false },
+      { text: "Miami", correct: false },
+      { text: "Las Vegas", correct: false }
+    ]
+  },
+  // 20. Mexico City
+  {
+    question: "What is the name of the circuit that hosts the Mexico City Grand Prix?",
+    answers: [
+      { text: "Autódromo Hermanos Rodríguez", correct: true },
+      { text: "Autódromo de los Pinos", correct: false },
+      { text: "Circuito Miguel Hidalgo", correct: false },
+      { text: "Parque Fundidora Circuit", correct: false }
+    ]
+  },
+  // 21. São Paulo (Brazil)
+  {
+    question: "Which Brazilian circuit hosts the São Paulo Grand Prix?",
+    answers: [
+      { text: "Interlagos (Autódromo José Carlos Pace)", correct: true },
+      { text: "Jacarepaguá", correct: false },
+      { text: "Brasília Autódromo", correct: false },
+      { text: "Curitiba Circuit", correct: false }
+    ]
+  },
+  // 22. Las Vegas
+  {
+    question: "In what year did Las Vegas first host an F1 championship race prior to 2023?",
+    answers: [
+      { text: "1981", correct: true },
+      { text: "1984", correct: false },
+      { text: "1986", correct: false },
+      { text: "1979", correct: false }
+    ]
+  },
+  // 23. Qatar
+  {
+    question: "Which circuit hosts the Qatar Grand Prix?",
+    answers: [
+      { text: "Losail International Circuit", correct: true },
+      { text: "Yas Marina Circuit", correct: false },
+      { text: "Dubai Autodrome", correct: false },
+      { text: "Jeddah Corniche Circuit", correct: false }
+    ]
+  },
+  // 24. Abu Dhabi
+  {
+    question: "Who won the first Abu Dhabi Grand Prix in 2009?",
+    answers: [
+      { text: "Sebastian Vettel", correct: true },
+      { text: "Lewis Hamilton", correct: false },
+      { text: "Jenson Button", correct: false },
+      { text: "Fernando Alonso", correct: false }
+    ]
   }
-  100% {
-    transform: translate(var(--x), -100vh) rotate(720deg) scale(0.7);
-    opacity: 0;
+];
+
+const loginContainer = document.getElementById("login-container");
+const quizContainer = document.getElementById("quiz-container");
+const playerNameInput = document.getElementById("player-name");
+const welcomeText = document.getElementById("welcome");
+
+const questionElement = document.getElementById("question");
+const answerButtons = document.getElementById("answer-buttons");
+const nextButton = document.getElementById("next-btn");
+const progressText = document.getElementById("progress");
+const trophyContainer = document.getElementById("trophy-container");
+const leaderboardEl = document.getElementById("leaderboard");
+const leaderboardList = document.getElementById("leaderboard-list");
+
+let currentQuestionIndex = 0;
+let score = 0;
+let playerName = "";
+let timerInterval;
+let secondsElapsed = 0;
+const timerDisplay = document.getElementById("timer");
+
+function startGame() {
+  playerName = playerNameInput.value.trim();
+  if (playerName === "") {
+    alert("Please enter your name to start!");
+    return;
+  }
+  loginContainer.style.display = "none";
+  quizContainer.style.display = "block";
+  startQuiz();
+}
+
+function startQuiz() {
+  currentQuestionIndex = 0;
+  score = 0;
+  secondsElapsed = 0;
+  updateTimer();
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    secondsElapsed++;
+    updateTimer();
+  }, 1000);
+
+  welcomeText.innerHTML = `Hello, ${playerName}! 👋`;
+
+  // Reset and create 24 trophies
+  trophyContainer.style.display = "none";
+  trophyContainer.innerHTML = "";
+  for (let i = 0; i < questions.length; i++) {
+    const trophy = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    trophy.setAttribute("viewBox", "0 0 24 24");
+    trophy.classList.add("trophy");
+    trophy.innerHTML = '<path d="M6 3h12v2h3v3c0 3.31-2.69 6-6 6h-6c-3.31 0-6-2.69-6-6V5h3V3zm6 18a5 5 0 0 0 5-5H7a5 5 0 0 0 5 5z"/>';
+    trophyContainer.appendChild(trophy);
+  }
+
+  showQuestion();
+}
+function updateTimer() {
+  const minutes = Math.floor(secondsElapsed / 60).toString().padStart(2, "0");
+  const seconds = (secondsElapsed % 60).toString().padStart(2, "0");
+  timerDisplay.innerHTML = `⏱️ ${minutes}:${seconds}`;
+}
+
+function showQuestion() {
+  resetState();
+  const currentQuestion = questions[currentQuestionIndex];
+  questionElement.innerHTML = currentQuestion.question;
+  progressText.innerHTML = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+
+  const shuffledAnswers = [...currentQuestion.answers].sort(() => Math.random() - 0.5);
+  shuffledAnswers.forEach(answer => {
+    const button = document.createElement("button");
+    button.innerHTML = answer.text;
+    button.classList.add("btn");
+    if (answer.correct) {
+      button.dataset.correct = answer.correct;
+    }
+    button.addEventListener("click", selectAnswer);
+    answerButtons.appendChild(button);
+  });
+}
+
+function resetState() {
+  nextButton.style.display = "none";
+  while (answerButtons.firstChild) {
+    answerButtons.removeChild(answerButtons.firstChild);
   }
 }
 
-/* Barrels */
-.barrel {
-  position: absolute;
-  bottom: -120px;
-  width: 80px;
-  height: 120px;
-  background: #444;
-  border-radius: 20px;
-  box-shadow: inset 0 -10px 0 #222;
-  transition: bottom 0.8s ease;
-  z-index: 1000;
+function selectAnswer(e) {
+  const selectedBtn = e.target;
+  const isCorrect = selectedBtn.dataset.correct === "true";
+  if (isCorrect) {
+    selectedBtn.classList.add("correct");
+    score++;
+    launchConfetti();
+  } else {
+    selectedBtn.classList.add("wrong");
+  }
+  Array.from(answerButtons.children).forEach(button => {
+    if (button.dataset.correct === "true") {
+      button.classList.add("correct");
+    }
+    button.disabled = true;
+  });
+  setTimeout(() => {
+    handleNextButton();
+  }, 1000);
+
 }
 
-.barrel.left {
-  left: 40px;
+function showScore() {
+  resetState();
+  questionElement.innerHTML = `🎉 Congrats, ${playerName}! You scored ${score} out of ${questions.length}!`;
+  nextButton.innerHTML = "Play Again";
+  nextButton.style.display = "block";
+
+  clearInterval(timerInterval);
+
+  launchConfetti();
+  clearInterval(timerInterval);
+
+  // Show and fill trophies
+  trophyContainer.style.display = "grid";
+  const trophies = trophyContainer.querySelectorAll(".trophy");
+  trophies.forEach((trophy, index) => {
+    if (index < score) {
+      trophy.classList.add("filled");
+    } else {
+      trophy.classList.remove("filled");
+    }
+  });
+
+  // ✅ Add this line:
+  saveScore();
+
+  
+}
+function saveScore() {
+  const timeTaken = secondsElapsed; // total seconds
+  const newEntry = { name: playerName, score, time: timeTaken };
+
+  let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+  leaderboard.push(newEntry);
+
+  // Sort by score (desc), then time (asc)
+  leaderboard.sort((a, b) => {
+    if (b.score === a.score) {
+      return a.time - b.time;
+    }
+    return b.score - a.score;
+  });
+
+  // Keep only top 10
+  leaderboard = leaderboard.slice(0, 10);
+
+  localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+  displayLeaderboard(leaderboard);
+}
+function displayLeaderboard(leaderboard) {
+  leaderboardEl.style.display = "block";
+  leaderboardList.innerHTML = "";
+  leaderboard.forEach((entry, index) => {
+    const minutes = Math.floor(entry.time / 60).toString().padStart(2, "0");
+    const seconds = (entry.time % 60).toString().padStart(2, "0");
+    const li = document.createElement("li");
+    li.textContent = `${index + 1}. ${entry.name} — ${entry.score}/24 in ${minutes}:${seconds}`;
+    leaderboardList.appendChild(li);
+  });
 }
 
-.barrel.right {
-  right: 40px;
+
+function handleNextButton() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    showQuestion();
+  } else {
+    showScore();
+  }
 }
 
-.barrel.show {
-  bottom: 20px;
-}
+nextButton.addEventListener("click", () => {
+  if (currentQuestionIndex < questions.length) {
+    handleNextButton();
+  } else {
+    startQuiz();
+  }
+});
 
-/* Trophy Row (2 rows × 12 columns automatically with 24 items) */
-.trophy-row {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 8px;
-  justify-items: center;
-}
+function launchConfetti() {
+  const leftBarrel = document.getElementById("barrel-left");
+  const rightBarrel = document.getElementById("barrel-right");
 
-.trophy {
-  width: 28px;
-  height: 28px;
-  fill: grey;
-  opacity: 0.6;
-  transition: 0.3s ease;
-}
+  leftBarrel.classList.add("show");
+  rightBarrel.classList.add("show");
 
-.trophy.filled {
-  fill: gold;
-  opacity: 1;
-}
-.leaderboard {
-  margin-top: 20px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  text-align: left;
-  max-height: 300px;
-  overflow-y: auto;
-}
+  for (let i = 0; i < 80; i++) { // doubled confetti
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti");
 
-.leaderboard h3 {
-  margin-bottom: 10px;
-  color: #ffeb3b;
-  text-align: center;
-}
+    if (Math.random() > 0.5) {
+      confetti.style.left = "80px";
+    } else {
+      confetti.style.right = "80px";
+    }
 
-.leaderboard ol {
-  margin: 0;
-  padding-left: 20px;
-  color: #fff;
-}
+    const spread = (Math.random() * 200 - 100) + "px";
+    confetti.style.setProperty("--x", spread);
 
-.leaderboard li {
-  margin: 5px 0;
-  font-size: 0.95rem;
-}
+    confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    confetti.style.animationDuration = (2 + Math.random() * 1.5) + "s";
 
-#timer {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #ffeb3b;
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+      confetti.remove();
+    }, 3000);
+  }
+
+  setTimeout(() => {
+    leftBarrel.classList.remove("show");
+    rightBarrel.classList.remove("show");
+  }, 2000);
 }
