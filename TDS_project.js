@@ -355,6 +355,9 @@ function showScore() {
   questionElement.innerHTML = `🎉 Congrats, ${playerName}! You scored ${score} out of ${questions.length}!`;
   nextButton.innerHTML = "Play Again";
   nextButton.style.display = "block";
+
+  clearInterval(timerInterval);
+  
   launchConfetti();
 
   // Show and fill trophies
@@ -421,3 +424,4 @@ function launchConfetti() {
     rightBarrel.classList.remove("show");
   }, 2000);
 }
+
