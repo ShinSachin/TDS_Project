@@ -176,6 +176,33 @@ input {
   fill: gold;
   opacity: 1;
 }
+.leaderboard {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.leaderboard h3 {
+  margin-bottom: 10px;
+  color: #ffeb3b;
+  text-align: center;
+}
+
+.leaderboard ol {
+  margin: 0;
+  padding-left: 20px;
+  color: #fff;
+}
+
+.leaderboard li {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
 #timer {
   position: absolute;
   top: 15px;
