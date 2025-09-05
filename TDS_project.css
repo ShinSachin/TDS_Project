@@ -19,6 +19,8 @@ body {
   width: 100%;
   text-align: center;
   animation: fadeIn 0.7s ease;
+  position: relative;
+
 }
 
 h2 {
@@ -173,4 +175,12 @@ input {
 .trophy.filled {
   fill: gold;
   opacity: 1;
+}
+#timer {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffeb3b;
 }
