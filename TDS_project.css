@@ -1,3 +1,4 @@
+/* General page setup */
 body {
   font-family: 'Poppins', sans-serif;
   display: flex;
@@ -10,6 +11,7 @@ body {
   overflow: hidden;
 }
 
+/* Quiz & login containers */
 .container {
   background: rgba(0, 0, 0, 0.6);
   padding: 30px;
@@ -20,20 +22,10 @@ body {
   text-align: center;
   animation: fadeIn 0.7s ease;
   position: relative;
-
 }
 
-h2 {
-  margin-bottom: 20px;
-  font-size: 1.6rem;
-}
-
-h3#progress {
-  margin-bottom: 15px;
-  font-size: 1rem;
-  font-weight: 400;
-  color: #ffeb3b;
-}
+h2 { margin-bottom: 20px; font-size: 1.6rem; }
+h3#progressText { margin-bottom: 15px; font-size: 1rem; font-weight: 400; color: #ffeb3b; }
 
 input {
   padding: 12px;
@@ -44,6 +36,7 @@ input {
   font-size: 1rem;
 }
 
+/* Buttons */
 .btn {
   display: inline-block;
   width: 100%;
@@ -57,105 +50,23 @@ input {
   cursor: pointer;
   transition: 0.3s;
 }
+.btn:hover { transform: scale(1.05); background: #ffeb3b; }
 
-.btn:hover {
-  transform: scale(1.05);
-  background: #ffeb3b;
-}
+/* Answer highlight */
+.correct { background: #4CAF50 !important; color: #fff; animation: glow 1s ease infinite alternate; }
+.wrong { background: #f44336 !important; color: #fff; }
 
-.correct {
-  background: #4CAF50 !important;
-  color: #fff;
-  animation: correctAnim 0.6s ease, glow 1s ease infinite alternate;
-}
-
-.wrong {
-  background: #f44336 !important;
-  color: #fff;
-  animation: wrongAnim 0.6s ease;
-}
-
-#next-btn {
-  margin-top: 15px;
-  background: #2196F3;
-  color: white;
-  display: none;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes correctAnim {
-  0% { transform: scale(1); }
-  30% { transform: scale(1.2) rotate(5deg); }
-  60% { transform: scale(0.9) rotate(-5deg); }
-  100% { transform: scale(1); }
-}
-
-@keyframes glow {
-  from { box-shadow: 0 0 10px #4CAF50; }
-  to { box-shadow: 0 0 20px #4CAF50; }
-}
-
-@keyframes wrongAnim {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-10px); }
-  40% { transform: translateX(10px); }
-  60% { transform: translateX(-10px); }
-  80% { transform: translateX(10px); }
-}
-
-/* Confetti */
-.confetti {
+/* Timer in corner */
+#quizTimer {
   position: absolute;
-  bottom: 80px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  opacity: 0.9;
-  animation: shootUp 2.5s ease-out forwards;
-  z-index: 2000;
+  top: 15px;
+  right: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffeb3b;
 }
 
-@keyframes shootUp {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(var(--x), -100vh) rotate(720deg) scale(0.7);
-    opacity: 0;
-  }
-}
-
-/* Barrels */
-.barrel {
-  position: absolute;
-  bottom: -120px;
-  width: 80px;
-  height: 120px;
-  background: #444;
-  border-radius: 20px;
-  box-shadow: inset 0 -10px 0 #222;
-  transition: bottom 0.8s ease;
-  z-index: 1000;
-}
-
-.barrel.left {
-  left: 40px;
-}
-
-.barrel.right {
-  right: 40px;
-}
-
-.barrel.show {
-  bottom: 20px;
-}
-
-/* Trophy Row (2 rows × 12 columns automatically with 24 items) */
+/* Trophy shelf */
 .trophy-row {
   margin-top: 20px;
   display: grid;
@@ -163,19 +74,10 @@ input {
   gap: 8px;
   justify-items: center;
 }
+.trophy { width: 28px; height: 28px; fill: grey; opacity: 0.6; transition: 0.3s; }
+.trophy.filled { fill: gold; opacity: 1; }
 
-.trophy {
-  width: 28px;
-  height: 28px;
-  fill: grey;
-  opacity: 0.6;
-  transition: 0.3s ease;
-}
-
-.trophy.filled {
-  fill: gold;
-  opacity: 1;
-}
+/* Leaderboard styling */
 .leaderboard {
   margin-top: 20px;
   padding: 15px;
@@ -185,29 +87,106 @@ input {
   max-height: 300px;
   overflow-y: auto;
 }
+.leaderboard h3 { margin-bottom: 10px; color: #ffeb3b; text-align: center; }
+.leaderboard li {
+  margin: 8px 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.leaderboard li svg { width: 22px; height: 22px; flex-shrink: 0; }
 
-.leaderboard h3 {
-  margin-bottom: 10px;
-  color: #ffeb3b;
+/* Podium look */
+.podium {
+  margin: 25px auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  height: 150px;
+}
+.podium-spot {
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  padding-top: 8px;
   text-align: center;
 }
-
-.leaderboard ol {
-  margin: 0;
-  padding-left: 20px;
-  color: #fff;
-}
-
-.leaderboard li {
-  margin: 5px 0;
-  font-size: 0.95rem;
-}
-
-#timer {
+.podium-spot span {
   position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 1rem;
+  top: -28px;
+  width: 100%;
   font-weight: bold;
-  color: #ffeb3b;
+  font-size: 1rem;
+  color: white;
+  text-shadow: 0 0 3px black, 0 0 6px black;
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+.podium-spot.first { height: 130px; background: gold; }
+.podium-spot.second { height: 100px; background: silver; }
+.podium-spot.third { height: 80px; background: #cd7f32; }
+.podium-spot.first span { border: 2px solid gold; }
+.podium-spot.second span { border: 2px solid silver; }
+.podium-spot.third span { border: 2px solid #cd7f32; }
+
+/* Barrels for confetti */
+.barrel { position: absolute; bottom: -120px; width: 80px; height: 120px; background: #444; border-radius: 20px; box-shadow: inset 0 -10px 0 #222; transition: bottom 0.8s; }
+.barrel.left { left: 40px; }
+.barrel.right { right: 40px; }
+.barrel.show { bottom: 20px; }
+
+/* Confetti */
+.confetti { position: absolute; bottom: 80px; width: 10px; height: 10px; border-radius: 50%; opacity: 0.9; animation: shootUp 2.5s ease-out forwards; z-index: 2000; }
+@keyframes shootUp {
+  0% { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--x), -100vh) rotate(720deg) scale(0.7); opacity: 0; }
+}
+.podium-trophy {
+  width: 65px;
+  height: 65px;
+  margin-top: 10px;
+  filter: drop-shadow(0 0 4px black);
+}
+
+/* Different colors for each podium */
+.podium-spot.first .podium-trophy { fill: gold; }
+.podium-spot.second .podium-trophy { fill: silver; }
+.podium-spot.third .podium-trophy { fill: #cd7f32; }
+/* Detailed podium trophies */
+.podium-trophy {
+  width: 70px;
+  height: 70px;
+  margin-top: 10px;
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.6));
+}
+
+/* Metallic looks for each podium */
+.podium-trophy.gold {
+  fill: gold;
+  stroke: #b8860b;
+  stroke-width: 1.5;
+}
+.podium-trophy.silver {
+  fill: silver;
+  stroke: #aaa;
+  stroke-width: 1.5;
+}
+.podium-trophy.bronze {
+  fill: #cd7f32;
+  stroke: #8b4513;
+  stroke-width: 1.5;
+}
+
+/* Gold trophy shine animation */
+.podium-trophy.gold {
+  animation: shine 2s infinite alternate;
+}
+@keyframes shine {
+  0% { filter: drop-shadow(0 0 6px gold); }
+  100% { filter: drop-shadow(0 0 15px yellow); }
 }
