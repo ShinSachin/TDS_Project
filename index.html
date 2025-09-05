@@ -7,37 +7,69 @@
   <link rel="stylesheet" href="TDS_project.css" />
 </head>
 <body>
-  <!-- Login Page -->
-  <div class="container" id="login-container">
+  <!-- Login screen -->
+  <div class="container" id="loginBox">
     <h2>Welcome to the F1 History Quiz 🏎️</h2>
-    <p>Enter your name to begin:</p>
-    <input type="text" id="player-name" placeholder="Your name..." />
+    <p>Type your name to start:</p>
+    <input type="text" id="playerInput" placeholder="Your name..." />
     <button class="btn" onclick="startGame()">Start Quiz</button>
   </div>
 
-  <!-- Quiz Page -->
-  <div class="container" id="quiz-container" style="display: none;">
-    <h2 id="welcome"></h2>
-    <h3 id="timer">⏱️ 00:00</h3>
-    <h3 id="progress">Question 1 of 24</h3>
-    <h2 id="question">Loading...</h2>
-    <div id="answer-buttons"></div>
-    <button id="next-btn" class="btn">Next</button>
+  <!-- Quiz screen -->
+  <div class="container" id="quizBox" style="display: none;">
+    <h2 id="greeting"></h2>
+    <h3 id="quizTimer">⏱️ 00:00</h3>
+    <h3 id="progressText">Question 1 of 24</h3>
+    <h2 id="questionText">Loading...</h2>
+    <div id="choicesArea"></div>
+    <button id="restartBtn" class="btn">Next</button>
+    
+<!-- Podium for top 3 -->
+<div id="podiumArea" class="podium" style="display:none;">
+  <div class="podium-spot second">
+    <span id="podiumSecond"></span>
+    <!-- Silver Trophy -->
+    <svg class="podium-trophy silver" viewBox="0 0 64 64">
+      <path d="M20 8h24v6h8v8c0 8-6 14-14 14h-2c-1 3-3 6-6 8v6h10v6H24v-6h10v-6c-3-2-5-5-6-8h-2c-8 0-14-6-14-14v-8h8V8z"/>
+      <path d="M12 14h-6v8c0 6 4 10 10 10" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M52 14h6v8c0 6-4 10-10 10" fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="podium-spot first">
+    <span id="podiumFirst"></span>
+    <!-- Gold Trophy -->
+    <svg class="podium-trophy gold" viewBox="0 0 64 64">
+      <path d="M20 8h24v6h8v8c0 8-6 14-14 14h-2c-1 3-3 6-6 8v6h10v6H24v-6h10v-6c-3-2-5-5-6-8h-2c-8 0-14-6-14-14v-8h8V8z"/>
+      <path d="M12 14h-6v8c0 6 4 10 10 10" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M52 14h6v8c0 6-4 10-10 10" fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="podium-spot third">
+    <span id="podiumThird"></span>
+    <!-- Bronze Trophy -->
+    <svg class="podium-trophy bronze" viewBox="0 0 64 64">
+      <path d="M20 8h24v6h8v8c0 8-6 14-14 14h-2c-1 3-3 6-6 8v6h10v6H24v-6h10v-6c-3-2-5-5-6-8h-2c-8 0-14-6-14-14v-8h8V8z"/>
+      <path d="M12 14h-6v8c0 6 4 10 10 10" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M52 14h6v8c0 6-4 10-10 10" fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+  </div>
+</div>
 
-    <!-- Trophy container (hidden until the end) -->
-    <div id="trophy-container" class="trophy-row" style="display:none;"></div>
+
+
+    <!-- Trophy row for score -->
+    <div id="trophyShelf" class="trophy-row" style="display:none;"></div>
 
     <!-- Leaderboard -->
-    <div id="leaderboard" class="leaderboard" style="display:none;">
-    <h3>🏆 Leaderboard</h3>
-    <ol id="leaderboard-list"></ol>
+    <div id="leaderboardBox" class="leaderboard" style="display:none;">
+      <h3>🏆 Leaderboard</h3>
+      <ol id="leaderboardList"></ol>
     </div>
-
   </div>
 
-  <!-- Barrels for Confetti -->
-  <div class="barrel left" id="barrel-left"></div>
-  <div class="barrel right" id="barrel-right"></div>
+  <!-- Confetti barrels -->
+  <div class="barrel left" id="barrelLeft"></div>
+  <div class="barrel right" id="barrelRight"></div>
 
   <script src="TDS_project.js"></script>
 </body>
