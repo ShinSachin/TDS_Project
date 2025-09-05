@@ -255,6 +255,9 @@ const trophyContainer = document.getElementById("trophy-container");
 let currentQuestionIndex = 0;
 let score = 0;
 let playerName = "";
+let timerInterval;
+let secondsElapsed = 0;
+const timerDisplay = document.getElementById("timer");
 
 function startGame() {
   playerName = playerNameInput.value.trim();
@@ -270,6 +273,14 @@ function startGame() {
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
+  secondsElapsed = 0;
+  updateTimer();
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    secondsElapsed++;
+    updateTimer();
+  }, 1000);
+
   welcomeText.innerHTML = `Hello, ${playerName}! 👋`;
 
   // Reset and create 24 trophies
@@ -284,6 +295,11 @@ function startQuiz() {
   }
 
   showQuestion();
+}
+function updateTimer() {
+  const minutes = Math.floor(secondsElapsed / 60).toString().padStart(2, "0");
+  const seconds = (secondsElapsed % 60).toString().padStart(2, "0");
+  timerDisplay.innerHTML = `⏱️ ${minutes}:${seconds}`;
 }
 
 function showQuestion() {
@@ -328,7 +344,10 @@ function selectAnswer(e) {
     }
     button.disabled = true;
   });
-  nextButton.style.display = "block";
+  setTimeout(() => {
+    handleNextButton();
+  }, 1000);
+
 }
 
 function showScore() {
