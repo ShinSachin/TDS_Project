@@ -1,467 +1,339 @@
+// --- F1 History Quiz Questions (24 races in 2024 calendar order) ---
 const questions = [
-  // 1. Bahrain
-  {
-    question: "Who won the inaugural Bahrain Grand Prix in 2004?",
-    answers: [
-      { text: "Michael Schumacher", correct: true },
-      { text: "Fernando Alonso", correct: false },
-      { text: "Kimi Räikkönen", correct: false },
-      { text: "Rubens Barrichello", correct: false }
-    ]
-  },
-  // 2. Saudi Arabia
-  {
-    question: "Who won the first Saudi Arabian Grand Prix in 2021?",
-    answers: [
-      { text: "Lewis Hamilton", correct: true },
-      { text: "Max Verstappen", correct: false },
-      { text: "Valtteri Bottas", correct: false },
-      { text: "Sergio Pérez", correct: false }
-    ]
-  },
-  // 3. Australia
-  {
-    question: "Which city replaced Adelaide as the Australian GP host in 1996?",
-    answers: [
-      { text: "Melbourne", correct: true },
-      { text: "Sydney", correct: false },
-      { text: "Perth", correct: false },
-      { text: "Brisbane", correct: false }
-    ]
-  },
-  // 4. Japan
-  {
-    question: "At which circuit is the Japanese Grand Prix traditionally held?",
-    answers: [
-      { text: "Suzuka Circuit", correct: true },
-      { text: "Fuji Speedway", correct: false },
-      { text: "Okayama", correct: false },
-      { text: "Motegi", correct: false }
-    ]
-  },
-  // 5. China
-  {
-    question: "Who won the first Chinese Grand Prix in 2004?",
-    answers: [
-      { text: "Rubens Barrichello", correct: true },
-      { text: "Michael Schumacher", correct: false },
-      { text: "Fernando Alonso", correct: false },
-      { text: "Kimi Räikkönen", correct: false }
-    ]
-  },
-  // 6. Miami
-  {
-    question: "In which year was the first Miami Grand Prix held?",
-    answers: [
-      { text: "2022", correct: true },
-      { text: "2021", correct: false },
-      { text: "2023", correct: false },
-      { text: "2020", correct: false }
-    ]
-  },
-  // 7. Emilia Romagna (Imola)
-  {
-    question: "What is the official name of the Imola circuit hosting the Emilia Romagna GP?",
-    answers: [
-      { text: "Autodromo Enzo e Dino Ferrari", correct: true },
-      { text: "Autodromo Nazionale Monza", correct: false },
-      { text: "Mugello Circuit", correct: false },
-      { text: "Vallelunga Circuit", correct: false }
-    ]
-  },
-  // 8. Monaco
-  {
-    question: "Who holds the record for the most Monaco Grand Prix wins?",
-    answers: [
-      { text: "Ayrton Senna", correct: true },
-      { text: "Michael Schumacher", correct: false },
-      { text: "Graham Hill", correct: false },
-      { text: "Alain Prost", correct: false }
-    ]
-  },
-  // 9. Canada
-  {
-    question: "Who was the first Canadian driver to win the Canadian Grand Prix?",
-    answers: [
-      { text: "Gilles Villeneuve", correct: true },
-      { text: "Jacques Villeneuve", correct: false },
-      { text: "Lance Stroll", correct: false },
-      { text: "George Eaton", correct: false }
-    ]
-  },
-  // 10. Spain
-  {
-    question: "Which Spanish driver won his home race at the 2006 Spanish Grand Prix?",
-    answers: [
-      { text: "Fernando Alonso", correct: true },
-      { text: "Carlos Sainz", correct: false },
-      { text: "Pedro de la Rosa", correct: false },
-      { text: "Marc Gené", correct: false }
-    ]
-  },
-  // 11. Austria
-  {
-    question: "Which circuit is home to the Austrian Grand Prix?",
-    answers: [
-      { text: "Red Bull Ring", correct: true },
-      { text: "A1 Ring", correct: false },
-      { text: "Zeltweg Airfield", correct: false },
-      { text: "Salzburg Ring", correct: false }
-    ]
-  },
-  // 12. Great Britain
-  {
-    question: "Who holds the record for most British Grand Prix wins at Silverstone?",
-    answers: [
-      { text: "Lewis Hamilton", correct: true },
-      { text: "Jim Clark", correct: false },
-      { text: "Nigel Mansell", correct: false },
-      { text: "Alain Prost", correct: false }
-    ]
-  },
-  // 13. Hungary
-  {
-    question: "The Hungaroring, home of the Hungarian GP, is located near which city?",
-    answers: [
-      { text: "Budapest", correct: true },
-      { text: "Debrecen", correct: false },
-      { text: "Szeged", correct: false },
-      { text: "Miskolc", correct: false }
-    ]
-  },
-  // 14. Belgium
-  {
-    question: "Which circuit hosts the Belgian Grand Prix?",
-    answers: [
-      { text: "Spa-Francorchamps", correct: true },
-      { text: "Zolder", correct: false },
-      { text: "Nivelles", correct: false },
-      { text: "Mettet", correct: false }
-    ]
-  },
-  // 15. Netherlands
-  {
-    question: "Who is the most successful driver at the Dutch Grand Prix?",
-    answers: [
-      { text: "Jim Clark", correct: true },
-      { text: "Max Verstappen", correct: false },
-      { text: "Niki Lauda", correct: false },
-      { text: "Jackie Stewart", correct: false }
-    ]
-  },
-  // 16. Italy (Monza)
-  {
-    question: "Which circuit has hosted the most Formula 1 World Championship races?",
-    answers: [
-      { text: "Monza", correct: true },
-      { text: "Silverstone", correct: false },
-      { text: "Spa-Francorchamps", correct: false },
-      { text: "Monaco", correct: false }
-    ]
-  },
-  // 17. Azerbaijan (Baku)
-  {
-    question: "Who won the first F1 race held in Baku in 2016 (then titled the European GP)?",
-    answers: [
-      { text: "Nico Rosberg", correct: true },
-      { text: "Lewis Hamilton", correct: false },
-      { text: "Sebastian Vettel", correct: false },
-      { text: "Daniel Ricciardo", correct: false }
-    ]
-  },
-  // 18. Singapore
-  {
-    question: "Who ended Red Bull’s 2023 winning streak by winning the Singapore GP?",
-    answers: [
-      { text: "Carlos Sainz", correct: true },
-      { text: "Charles Leclerc", correct: false },
-      { text: "Lewis Hamilton", correct: false },
-      { text: "Lando Norris", correct: false }
-    ]
-  },
-  // 19. United States (Austin)
-  {
-    question: "Which city has hosted the United States GP since 2012?",
-    answers: [
-      { text: "Austin", correct: true },
-      { text: "Indianapolis", correct: false },
-      { text: "Miami", correct: false },
-      { text: "Las Vegas", correct: false }
-    ]
-  },
-  // 20. Mexico City
-  {
-    question: "What is the name of the circuit that hosts the Mexico City Grand Prix?",
-    answers: [
-      { text: "Autódromo Hermanos Rodríguez", correct: true },
-      { text: "Autódromo de los Pinos", correct: false },
-      { text: "Circuito Miguel Hidalgo", correct: false },
-      { text: "Parque Fundidora Circuit", correct: false }
-    ]
-  },
-  // 21. São Paulo (Brazil)
-  {
-    question: "Which Brazilian circuit hosts the São Paulo Grand Prix?",
-    answers: [
-      { text: "Interlagos (Autódromo José Carlos Pace)", correct: true },
-      { text: "Jacarepaguá", correct: false },
-      { text: "Brasília Autódromo", correct: false },
-      { text: "Curitiba Circuit", correct: false }
-    ]
-  },
-  // 22. Las Vegas
-  {
-    question: "In what year did Las Vegas first host an F1 championship race prior to 2023?",
-    answers: [
-      { text: "1981", correct: true },
-      { text: "1984", correct: false },
-      { text: "1986", correct: false },
-      { text: "1979", correct: false }
-    ]
-  },
-  // 23. Qatar
-  {
-    question: "Which circuit hosts the Qatar Grand Prix?",
-    answers: [
-      { text: "Losail International Circuit", correct: true },
-      { text: "Yas Marina Circuit", correct: false },
-      { text: "Dubai Autodrome", correct: false },
-      { text: "Jeddah Corniche Circuit", correct: false }
-    ]
-  },
-  // 24. Abu Dhabi
-  {
-    question: "Who won the first Abu Dhabi Grand Prix in 2009?",
-    answers: [
-      { text: "Sebastian Vettel", correct: true },
-      { text: "Lewis Hamilton", correct: false },
-      { text: "Jenson Button", correct: false },
-      { text: "Fernando Alonso", correct: false }
-    ]
-  }
+  { question: "Who won the first ever Bahrain Grand Prix in 2004?", answers: [
+    { text: "Michael Schumacher", correct: true },
+    { text: "Fernando Alonso", correct: false },
+    { text: "Kimi Räikkönen", correct: false },
+    { text: "Rubens Barrichello", correct: false }
+  ]},
+  { question: "Which driver won the inaugural Saudi Arabian GP in 2021?", answers: [
+    { text: "Lewis Hamilton", correct: true },
+    { text: "Max Verstappen", correct: false },
+    { text: "Valtteri Bottas", correct: false },
+    { text: "Charles Leclerc", correct: false }
+  ]},
+  { question: "Who holds the record for most Australian GP wins?", answers: [
+    { text: "Michael Schumacher", correct: false },
+    { text: "Lewis Hamilton", correct: false },
+    { text: "Lex Davison & Michael Schumacher (4 each)", correct: true },
+    { text: "Sebastian Vettel", correct: false }
+  ]},
+  { question: "Which circuit hosts the Japanese GP?", answers: [
+    { text: "Suzuka Circuit", correct: true },
+    { text: "Fuji Speedway", correct: false },
+    { text: "Okayama", correct: false },
+    { text: "Motegi", correct: false }
+  ]},
+  { question: "Which driver won the Chinese GP when it debuted in 2004?", answers: [
+    { text: "Michael Schumacher", correct: false },
+    { text: "Rubens Barrichello", correct: true },
+    { text: "Jenson Button", correct: false },
+    { text: "Fernando Alonso", correct: false }
+  ]},
+  { question: "Who was the first American driver to win the Miami GP (2022)?", answers: [
+    { text: "Nobody yet, all winners have been non-American", correct: true },
+    { text: "Alexander Rossi", correct: false },
+    { text: "Logan Sargeant", correct: false },
+    { text: "Scott Speed", correct: false }
+  ]},
+  { question: "Which F1 team has the most victories at Imola (Emilia Romagna GP)?", answers: [
+    { text: "Ferrari", correct: true },
+    { text: "McLaren", correct: false },
+    { text: "Williams", correct: false },
+    { text: "Red Bull", correct: false }
+  ]},
+  { question: "Which driver famously crashed in Monaco 1988 while leading comfortably?", answers: [
+    { text: "Ayrton Senna", correct: true },
+    { text: "Nigel Mansell", correct: false },
+    { text: "Alain Prost", correct: false },
+    { text: "Nelson Piquet", correct: false }
+  ]},
+  { question: "Who won the first Canadian GP at Montreal (1978)?", answers: [
+    { text: "Gilles Villeneuve", correct: true },
+    { text: "Jacques Laffite", correct: false },
+    { text: "Alan Jones", correct: false },
+    { text: "Niki Lauda", correct: false }
+  ]},
+  { question: "Which Austrian GP track is currently used?", answers: [
+    { text: "Red Bull Ring", correct: true },
+    { text: "A1 Ring", correct: false },
+    { text: "Zeltweg Airfield", correct: false },
+    { text: "Österreichring", correct: false }
+  ]},
+  { question: "Who is nicknamed 'Mr. Silverstone' for his British GP performances?", answers: [
+    { text: "Lewis Hamilton", correct: true },
+    { text: "Nigel Mansell", correct: false },
+    { text: "Jim Clark", correct: false },
+    { text: "Stirling Moss", correct: false }
+  ]},
+  { question: "Which driver gave Ferrari their 1st F1 win at the German GP 1951?", answers: [
+    { text: "José Froilán González", correct: true },
+    { text: "Alberto Ascari", correct: false },
+    { text: "Luigi Villoresi", correct: false },
+    { text: "Juan Manuel Fangio", correct: false }
+  ]},
+  { question: "Which F1 legend has the most Hungarian GP wins?", answers: [
+    { text: "Lewis Hamilton", correct: true },
+    { text: "Michael Schumacher", correct: false },
+    { text: "Sebastian Vettel", correct: false },
+    { text: "Nelson Piquet", correct: false }
+  ]},
+  { question: "Who won the 1st Belgian GP at Spa in 1950?", answers: [
+    { text: "Juan Manuel Fangio", correct: true },
+    { text: "Giuseppe Farina", correct: false },
+    { text: "Luigi Fagioli", correct: false },
+    { text: "Alberto Ascari", correct: false }
+  ]},
+  { question: "Which driver has the most wins at the Dutch GP (Zandvoort)?", answers: [
+    { text: "Max Verstappen", correct: false },
+    { text: "Jim Clark", correct: true },
+    { text: "Jackie Stewart", correct: false },
+    { text: "Alain Prost", correct: false }
+  ]},
+  { question: "Which legendary Ferrari driver won Monza 1960 Italian GP?", answers: [
+    { text: "Phil Hill", correct: true },
+    { text: "John Surtees", correct: false },
+    { text: "Lorenzo Bandini", correct: false },
+    { text: "Mike Hawthorn", correct: false }
+  ]},
+  { question: "Who won the 1st Azerbaijan GP in 2017?", answers: [
+    { text: "Daniel Ricciardo", correct: true },
+    { text: "Sebastian Vettel", correct: false },
+    { text: "Valtteri Bottas", correct: false },
+    { text: "Lewis Hamilton", correct: false }
+  ]},
+  { question: "Who won the 1st Singapore GP under lights in 2008?", answers: [
+    { text: "Fernando Alonso", correct: true },
+    { text: "Felipe Massa", correct: false },
+    { text: "Lewis Hamilton", correct: false },
+    { text: "Kimi Räikkönen", correct: false }
+  ]},
+  { question: "Which driver has the most USA GP wins at COTA?", answers: [
+    { text: "Lewis Hamilton", correct: true },
+    { text: "Sebastian Vettel", correct: false },
+    { text: "Max Verstappen", correct: false },
+    { text: "Michael Schumacher", correct: false }
+  ]},
+  { question: "Who won the first Mexican GP in 1963?", answers: [
+    { text: "Jim Clark", correct: true },
+    { text: "Graham Hill", correct: false },
+    { text: "Jack Brabham", correct: false },
+    { text: "Dan Gurney", correct: false }
+  ]},
+  { question: "Which driver famously lost Brazil 2008 title on last lap?", answers: [
+    { text: "Felipe Massa", correct: true },
+    { text: "Lewis Hamilton", correct: false },
+    { text: "Sebastian Vettel", correct: false },
+    { text: "Robert Kubica", correct: false }
+  ]},
+  { question: "Who won the inaugural Las Vegas GP (1981 Caesars Palace GP)?", answers: [
+    { text: "Alan Jones", correct: false },
+    { text: "Nelson Piquet", correct: true },
+    { text: "Carlos Reutemann", correct: false },
+    { text: "Keke Rosberg", correct: false }
+  ]},
+  { question: "Who won the inaugural Qatar GP in 2021?", answers: [
+    { text: "Lewis Hamilton", correct: true },
+    { text: "Max Verstappen", correct: false },
+    { text: "Fernando Alonso", correct: false },
+    { text: "Valtteri Bottas", correct: false }
+  ]},
+  { question: "Which driver has the most Abu Dhabi GP wins?", answers: [
+    { text: "Lewis Hamilton", correct: true },
+    { text: "Sebastian Vettel", correct: false },
+    { text: "Nico Rosberg", correct: false },
+    { text: "Max Verstappen", correct: false }
+  ]}
 ];
 
-const loginContainer = document.getElementById("login-container");
-const quizContainer = document.getElementById("quiz-container");
-const playerNameInput = document.getElementById("player-name");
-const welcomeText = document.getElementById("welcome");
+// --- Elements from page ---
+const loginBox = document.getElementById("loginBox");
+const quizBox = document.getElementById("quizBox");
+const playerInput = document.getElementById("playerInput");
+const greeting = document.getElementById("greeting");
+const questionText = document.getElementById("questionText");
+const choicesArea = document.getElementById("choicesArea");
+const restartBtn = document.getElementById("restartBtn");
+const progressText = document.getElementById("progressText");
+const trophyShelf = document.getElementById("trophyShelf");
+const leaderboardBox = document.getElementById("leaderboardBox");
+const leaderboardList = document.getElementById("leaderboardList");
+const podiumArea = document.getElementById("podiumArea");
+const podiumFirst = document.getElementById("podiumFirst");
+const podiumSecond = document.getElementById("podiumSecond");
+const podiumThird = document.getElementById("podiumThird");
+const timerDisplay = document.getElementById("quizTimer");
 
-const questionElement = document.getElementById("question");
-const answerButtons = document.getElementById("answer-buttons");
-const nextButton = document.getElementById("next-btn");
-const progressText = document.getElementById("progress");
-const trophyContainer = document.getElementById("trophy-container");
-const leaderboardEl = document.getElementById("leaderboard");
-const leaderboardList = document.getElementById("leaderboard-list");
-
-let currentQuestionIndex = 0;
+// --- Game state ---
+let currentIndex = 0;
 let score = 0;
 let playerName = "";
 let timerInterval;
 let secondsElapsed = 0;
-const timerDisplay = document.getElementById("timer");
 
+// --- Start game ---
 function startGame() {
-  playerName = playerNameInput.value.trim();
-  if (playerName === "") {
-    alert("Please enter your name to start!");
-    return;
-  }
-  loginContainer.style.display = "none";
-  quizContainer.style.display = "block";
+  playerName = playerInput.value.trim();
+  if (!playerName) { alert("Type your name to play!"); return; }
+  loginBox.style.display = "none";
+  quizBox.style.display = "block";
   startQuiz();
 }
 
+// --- Start quiz ---
 function startQuiz() {
-  currentQuestionIndex = 0;
+  currentIndex = 0;
   score = 0;
   secondsElapsed = 0;
   updateTimer();
   clearInterval(timerInterval);
-  timerInterval = setInterval(() => {
-    secondsElapsed++;
-    updateTimer();
-  }, 1000);
+  timerInterval = setInterval(() => { secondsElapsed++; updateTimer(); }, 1000);
 
-  welcomeText.innerHTML = `Hello, ${playerName}! 👋`;
+  greeting.innerHTML = `Hello, ${playerName}! 👋`;
 
-  // Reset and create 24 trophies
-  trophyContainer.style.display = "none";
-  trophyContainer.innerHTML = "";
+  // reset trophies
+  trophyShelf.style.display = "none";
+  trophyShelf.innerHTML = "";
   for (let i = 0; i < questions.length; i++) {
-    const trophy = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    trophy.setAttribute("viewBox", "0 0 24 24");
-    trophy.classList.add("trophy");
-    trophy.innerHTML = '<path d="M6 3h12v2h3v3c0 3.31-2.69 6-6 6h-6c-3.31 0-6-2.69-6-6V5h3V3zm6 18a5 5 0 0 0 5-5H7a5 5 0 0 0 5 5z"/>';
-    trophyContainer.appendChild(trophy);
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.classList.add("trophy");
+    svg.innerHTML = '<path d="M6 3h12v2h3v3c0 3.31-2.69 6-6 6h-6c-3.31 0-6-2.69-6-6V5h3V3zm6 18a5 5 0 0 0 5-5H7a5 5 0 0 0 5 5z"/>';
+    trophyShelf.appendChild(svg);
   }
 
   showQuestion();
 }
+
+// --- Timer display ---
 function updateTimer() {
-  const minutes = Math.floor(secondsElapsed / 60).toString().padStart(2, "0");
-  const seconds = (secondsElapsed % 60).toString().padStart(2, "0");
-  timerDisplay.innerHTML = `⏱️ ${minutes}:${seconds}`;
+  const m = Math.floor(secondsElapsed / 60).toString().padStart(2,"0");
+  const s = (secondsElapsed % 60).toString().padStart(2,"0");
+  timerDisplay.innerHTML = `⏱️ ${m}:${s}`;
 }
 
+// --- Show a question ---
 function showQuestion() {
-  resetState();
-  const currentQuestion = questions[currentQuestionIndex];
-  questionElement.innerHTML = currentQuestion.question;
-  progressText.innerHTML = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
-
-  const shuffledAnswers = [...currentQuestion.answers].sort(() => Math.random() - 0.5);
-  shuffledAnswers.forEach(answer => {
-    const button = document.createElement("button");
-    button.innerHTML = answer.text;
-    button.classList.add("btn");
-    if (answer.correct) {
-      button.dataset.correct = answer.correct;
-    }
-    button.addEventListener("click", selectAnswer);
-    answerButtons.appendChild(button);
+  resetChoices();
+  const q = questions[currentIndex];
+  questionText.innerHTML = q.question;
+  progressText.innerHTML = `Question ${currentIndex+1} of ${questions.length}`;
+  [...q.answers].sort(() => Math.random()-0.5).forEach(ans => {
+    const btn = document.createElement("button");
+    btn.innerHTML = ans.text;
+    btn.classList.add("btn");
+    if (ans.correct) btn.dataset.correct = ans.correct;
+    btn.addEventListener("click", pickAnswer);
+    choicesArea.appendChild(btn);
   });
 }
 
-function resetState() {
-  nextButton.style.display = "none";
-  while (answerButtons.firstChild) {
-    answerButtons.removeChild(answerButtons.firstChild);
-  }
+// --- Reset old answers ---
+function resetChoices() {
+  restartBtn.style.display = "none";
+  while (choicesArea.firstChild) choicesArea.removeChild(choicesArea.firstChild);
 }
 
-function selectAnswer(e) {
-  const selectedBtn = e.target;
-  const isCorrect = selectedBtn.dataset.correct === "true";
-  if (isCorrect) {
-    selectedBtn.classList.add("correct");
-    score++;
-    launchConfetti();
-  } else {
-    selectedBtn.classList.add("wrong");
-  }
-  Array.from(answerButtons.children).forEach(button => {
-    if (button.dataset.correct === "true") {
-      button.classList.add("correct");
-    }
-    button.disabled = true;
+// --- When player picks an answer ---
+function pickAnswer(e) {
+  const chosen = e.target;
+  const right = chosen.dataset.correct === "true";
+  if (right) { chosen.classList.add("correct"); score++; launchConfetti(); }
+  else { chosen.classList.add("wrong"); }
+  Array.from(choicesArea.children).forEach(b => {
+    if (b.dataset.correct === "true") b.classList.add("correct");
+    b.disabled = true;
   });
-  setTimeout(() => {
-    handleNextButton();
-  }, 1000);
-
+  setTimeout(() => nextStep(), 1000); // auto move
 }
 
-function showScore() {
-  resetState();
-  questionElement.innerHTML = `🎉 Congrats, ${playerName}! You scored ${score} out of ${questions.length}!`;
-  nextButton.innerHTML = "Play Again";
-  nextButton.style.display = "block";
-
+// --- Show final results ---
+function showFinalScore() {
+  resetChoices();
+  questionText.innerHTML = `🎉 ${playerName}, you scored ${score} / ${questions.length}!`;
+  restartBtn.innerHTML = "Play Again";
+  restartBtn.style.display = "block";
   clearInterval(timerInterval);
-
   launchConfetti();
-  clearInterval(timerInterval);
 
-  // Show and fill trophies
-  trophyContainer.style.display = "grid";
-  const trophies = trophyContainer.querySelectorAll(".trophy");
-  trophies.forEach((trophy, index) => {
-    if (index < score) {
-      trophy.classList.add("filled");
-    } else {
-      trophy.classList.remove("filled");
-    }
+  // fill trophies
+  trophyShelf.style.display = "grid";
+  trophyShelf.querySelectorAll(".trophy").forEach((t,i) => {
+    if (i < score) t.classList.add("filled");
   });
 
-  // ✅ Add this line:
+  // save & show leaderboard
   saveScore();
-
-  
 }
+
+// --- Save score ---
 function saveScore() {
-  const timeTaken = secondsElapsed; // total seconds
-  const newEntry = { name: playerName, score, time: timeTaken };
-
-  let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
-  leaderboard.push(newEntry);
-
-  // Sort by score (desc), then time (asc)
-  leaderboard.sort((a, b) => {
-    if (b.score === a.score) {
-      return a.time - b.time;
-    }
-    return b.score - a.score;
-  });
-
-  // Keep only top 10
-  leaderboard = leaderboard.slice(0, 10);
-
-  localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
-  displayLeaderboard(leaderboard);
+  const entry = { name: playerName, score, time: secondsElapsed };
+  let board = JSON.parse(localStorage.getItem("leaderboard")) || [];
+  board.push(entry);
+  board.sort((a,b) => b.score===a.score ? a.time-b.time : b.score-a.score);
+  board = board.slice(0,10); // keep top 10
+  localStorage.setItem("leaderboard", JSON.stringify(board));
+  displayLeaderboard(board);
 }
-function displayLeaderboard(leaderboard) {
-  leaderboardEl.style.display = "block";
+
+// --- Display leaderboard and podium ---
+function displayLeaderboard(board) {
+  leaderboardBox.style.display = "block";
   leaderboardList.innerHTML = "";
-  leaderboard.forEach((entry, index) => {
-    const minutes = Math.floor(entry.time / 60).toString().padStart(2, "0");
-    const seconds = (entry.time % 60).toString().padStart(2, "0");
+  board.forEach((p,i) => {
+    const m = Math.floor(p.time/60).toString().padStart(2,"0");
+    const s = (p.time%60).toString().padStart(2,"0");
     const li = document.createElement("li");
-    li.textContent = `${index + 1}. ${entry.name} — ${entry.score}/24 in ${minutes}:${seconds}`;
+
+    // Top 3 get colored trophies
+    let trophyColor = "gold";
+    if (i === 1) trophyColor = "silver";
+    if (i === 2) trophyColor = "#cd7f32";
+
+    li.innerHTML = `
+      <svg viewBox="0 0 24 24" style="fill:${trophyColor}">
+        <path d="M6 3h12v2h3v3c0 3.31-2.69 6-6 6h-6c-3.31 0-6-2.69-6-6V5h3V3zm6 18a5 5 0 0 0 5-5H7a5 5 0 0 0 5 5z"/>
+      </svg>
+      ${i+1}. ${p.name} — ${p.score}/24 in ${m}:${s}
+    `;
     leaderboardList.appendChild(li);
   });
+
+  // podium update
+  podiumArea.style.display = board.length ? "flex" : "none";
+  podiumFirst.textContent = board[0] ? `${board[0].name} (${board[0].score})` : "";
+  podiumSecond.textContent = board[1] ? `${board[1].name} (${board[1].score})` : "";
+  podiumThird.textContent = board[2] ? `${board[2].name} (${board[2].score})` : "";
 }
 
-
-function handleNextButton() {
-  currentQuestionIndex++;
-  if (currentQuestionIndex < questions.length) {
-    showQuestion();
-  } else {
-    showScore();
-  }
+// --- Next step ---
+function nextStep() {
+  currentIndex++;
+  if (currentIndex < questions.length) showQuestion();
+  else showFinalScore();
 }
 
-nextButton.addEventListener("click", () => {
-  if (currentQuestionIndex < questions.length) {
-    handleNextButton();
-  } else {
-    startQuiz();
-  }
+// --- Restart / Next button ---
+restartBtn.addEventListener("click", () => {
+  if (currentIndex < questions.length) nextStep();
+  else startQuiz();
 });
 
+// --- Confetti launcher ---
 function launchConfetti() {
-  const leftBarrel = document.getElementById("barrel-left");
-  const rightBarrel = document.getElementById("barrel-right");
-
-  leftBarrel.classList.add("show");
-  rightBarrel.classList.add("show");
-
-  for (let i = 0; i < 80; i++) { // doubled confetti
-    const confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-
-    if (Math.random() > 0.5) {
-      confetti.style.left = "80px";
-    } else {
-      confetti.style.right = "80px";
-    }
-
-    const spread = (Math.random() * 200 - 100) + "px";
-    confetti.style.setProperty("--x", spread);
-
-    confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    confetti.style.animationDuration = (2 + Math.random() * 1.5) + "s";
-
-    document.body.appendChild(confetti);
-
-    setTimeout(() => {
-      confetti.remove();
-    }, 3000);
+  const left = document.getElementById("barrelLeft");
+  const right = document.getElementById("barrelRight");
+  left.classList.add("show"); right.classList.add("show");
+  for (let i=0; i<80; i++) {
+    const piece = document.createElement("div");
+    piece.classList.add("confetti");
+    if (Math.random()>0.5) piece.style.left="80px"; else piece.style.right="80px";
+    piece.style.setProperty("--x",(Math.random()*200-100)+"px");
+    piece.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    piece.style.animationDuration=(2+Math.random()*1.5)+"s";
+    document.body.appendChild(piece);
+    setTimeout(()=>piece.remove(),3000);
   }
-
-  setTimeout(() => {
-    leftBarrel.classList.remove("show");
-    rightBarrel.classList.remove("show");
-  }, 2000);
+  setTimeout(()=>{ left.classList.remove("show"); right.classList.remove("show"); },2000);
 }
